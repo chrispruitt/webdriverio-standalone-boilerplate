@@ -1,0 +1,21 @@
+{
+  "name": "webdriverio-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "dependencies": {
+    "webdriverio": "^4.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "wdio-allure-reporter": "^0.1.2",
+    "wdio-jasmine-framework": "^0.2.16",
+    "wdio-mocha-framework": "^0.5.4",
+    "wdio-selenium-standalone-service": "0.0.7"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/wdio wdio.conf.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
