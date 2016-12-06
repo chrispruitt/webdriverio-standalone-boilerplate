@@ -171,8 +171,13 @@ exports.config = {
     // },
     //
     // Function to be executed after a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
-    // afterTest: function (test) {
-    // },
+    afterTest: function (test) {
+        // Take a screenshot when test fails
+        if (test.passed) {
+            var screenshotName = (test.parent + '-' + test.title + '.png').replace(new RegExp(' ', 'g'), '_');
+            browser.saveScreenshot(this.screenshotPath + screenshotName);
+        }
+    },
     //
     // Hook that gets executed after the suite has ended
     // afterSuite: function (suite) {
@@ -187,18 +192,4 @@ exports.config = {
     // possible to defer the end of the process using a promise.
     // onComplete: function(exitCode) {
     // }
-
-    // Take a screenshot when an assertion fails
-    jasmineNodeOpts: {
-        defaultTimeoutInterval: 10000,
-        expectationResultHandler: function(passed, assertion) {
-            /**
-             * only take screenshot if assertion failed
-             */
-            if(passed) {
-                return;
-            }
-            browser.saveScreenshot('assertionError_' + assertion.error.message + '.png');
-        }
-    },
 }
